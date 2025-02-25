@@ -27,8 +27,20 @@ processed_ids_file = "processed_ids.json"
 # 加载已经处理的ID  
 def load_processed_ids():  
     if os.path.exists(processed_ids_file):  
-        with open(processed_ids_file, 'r') as f:  
-            return set(json.load(f))  
+        try:  
+            with open(processed_ids_file, 'r') as f:  
+                data = json.load(f)  
+                if isinstance(data, list):  # 确保数据是一个列表  
+                    return set(data)  
+                else:  
+                    print("文件内容不是列表，将被重置为空集合")  
+                    return set()  
+        except json.JSONDecodeError as e:  
+            print(f"文件内容无法解析为 JSON: {e}, 将重置为空集合")  
+            return set()  
+        except Exception as e:  
+            print(f"加载文件时发生错误: {e}, 将重置为空集合")  
+            return set()  
     return set()  
 
 processed_ids = load_processed_ids()  
