@@ -76,11 +76,11 @@ python monitor.py
 ## 效果
 终端中显示
 
-![](.\img\result.png)
+![](./img/result.png)
 
 钉钉机器人消息（请忽略发送时间，历史消息清空，手动触发了一次）
 
-![](.\img\alert.png)
+![](./img/alert.png)
 
 ## 注意事项
 - 请确保你的雪球账号已经通过验证，否则无法获取完整数据。
